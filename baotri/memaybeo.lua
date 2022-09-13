@@ -6605,13 +6605,17 @@ if BF then
 		task = task or getrenv().task;
 		fastSpawn,fastWait,delay = task.spawn,task.wait,task.delay
 	end
-	DistanceMobAura = 600
+	DistanceMobAura = 100
 	spawn(function()
 		while wait() do
 			if AutoMobAura then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if AutoMobAura and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= DistanceMobAura then
 						repeat wait()
+						if (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 350 then
+							Questtween = toTarget(v.HumanoidRootPart.Position,v.HumanoidRootPart.CFrame)
+						elseif (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 350 then
+							if Questtween then Questtween:Stop() end
 							EquipWeapon(SelectToolWeapon)
 							PosMonAura = v.HumanoidRootPart.CFrame
 							Usefastattack = true
@@ -6628,7 +6632,8 @@ if BF then
 								delay(1,function()
 									MagnetMobAura = true
 								end)
-							end 
+							end
+						end
 						until not AutoMobAura or not v.Parent or v.Humanoid.Health <= 0
 						Usefastattack = false
 					end
@@ -6657,7 +6662,7 @@ if BF then
 			end
 		end
 	end)
-	AutoFarmMiscTab:Slider("Distance",1,400,100,DistanceMobAura,function(A)
+	AutoFarmMiscTab:Slider("Distance",1,1000,100,DistanceMobAura,function(A)
 		DistanceMobAura = A
 	end)
 	AutoFarmMiscTab:Line()
@@ -8989,7 +8994,7 @@ if BF then
 												wait()
 												game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
 											end)
-											wait(1)
+											wait(5)
 										end
 									end
 								end
@@ -9058,7 +9063,7 @@ if BF then
 											wait()
 											game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
 										end)
-										wait(1)
+										wait(5)
 									end
 								end
 							end
