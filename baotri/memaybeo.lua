@@ -23,7 +23,7 @@ if BF then
 	end
 	if getgenv().Setting then else
 		getgenv().Setting = {
-			["Join Team"] = "Pirate", -- "Pirate","Marine"
+			["Join Team"] = "Marine", -- "Pirate","Marine"
 			["Auto Farm Level"] = false,
 		
 			-- Setting etc
