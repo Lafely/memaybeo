@@ -3,17 +3,17 @@ local placeId = game.PlaceId
 if placeId == 2753915549 or placeId == 4442272183 or placeId == 7449423635 then
     BF = true
 elseif placeId == 3237168 then
-    OPL = false
+    OPL = true
 elseif placeId == 914010731 then
-    RO = false
+    RO = true
 elseif placeId == 6299805723 then
-    AFS = false
+    AFS = true
 elseif placeId == 4520749081 or placeId == 6381829480 or placeId == 5931540094 then
-	KL = false
+	KL = true
 elseif placeId == 4042427666 then
-    ANS = false
+    ANS = true
 elseif placeId == 2809202155 then
-    YBA = false
+    YBA = true
     print("\n game not support")
 end
 if BF then
@@ -4879,7 +4879,7 @@ if BF then
 						BringMob()
 						AttackNoCD()
 					end)
-					wait(0.05)
+					wait(0.09)
 				end
 			end
 		end
@@ -9038,7 +9038,7 @@ if BF then
 							for i,v in pairs(Site.data) do
 								local Possible = true
 								ID = tostring(v.id)
-								if tonumber(4) > tonumber(v.playing) then
+								if tonumber(2) > tonumber(v.playing) then
 									for _,Existing in pairs(AllIDs) do
 										if num ~= 0 then
 											if ID == tostring(Existing) then
@@ -9063,7 +9063,7 @@ if BF then
 											wait()
 											game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
 										end)
-										wait(5)
+										wait(1)
 									end
 								end
 							end
@@ -9076,6 +9076,7 @@ if BF then
 										TPReturner()
 									end
 								end)
+								wait(5)
 							end
 						end
 						Teleport()
